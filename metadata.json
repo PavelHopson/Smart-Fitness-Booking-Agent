@@ -1,0 +1,5 @@
+{
+  "name": "smart-fitness-booking-agent-demo",
+  "description": "A live demonstration of an AI Agent handling fitness bookings using Function Calling, structured outputs, and simulated database interactions.",
+  "requestFramePermissions": []
+}
