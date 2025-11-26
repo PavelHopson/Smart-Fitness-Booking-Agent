@@ -1,20 +1,92 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Smart Fitness Booking Agent 🤖💪
 
-# Run and deploy your AI Studio app
+AI-агент для фитнес-клуба, который обрабатывает запросы клиентов в стиле:
+> «Хочу записаться на тренировку завтра вечером»
 
-This contains everything you need to run your app locally.
+и автоматически выполняет:
+✅ извлечение даты и времени
+✅ получение расписания через внешнее API
+✅ поиск свободных слотов
+✅ бронирование
+✅ подтверждение записи
 
-View your app in AI Studio: https://ai.studio/apps/drive/1SCh6O4HXeq52NgWK_QVW78PPwC9s339G
+Проект демонстрирует:
+- **Function Calling**: превращение текста в вызовы функций.
+- **Robust API Integration**: `retry` стратегии, `backoff`, таймауты.
+- **State Management**: имитация базы данных (Redis/Postgres) для трекинга слотов.
 
-## Run Locally
+---
 
-**Prerequisites:**  Node.js
+## 🚀 Возможности
 
+### 1. Natural-language understanding
+Агент понимает контекст, сленг и нечеткие даты («послезавтра после обеда», «в эту пятницу на йогу»).
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 2. Инструменты (Function Calling)
+Агент имеет доступ к строго типизированным инструментам:
+- `getSchedule(date)` — получение слотов.
+- `bookSlot(id, name)` — атомарное бронирование.
+- `checkAvailability(ids)` — проверка статуса перед записью.
+
+### 3. Архитектура надежности
+Встроенный модуль `retryFetch.ts` обеспечивает:
+- Повторные попытки при 5xx ошибках.
+- Обработку Rate Limits (429).
+- Таймауты для медленных соединений.
+
+---
+
+## 🛠 Технический стек
+
+- **Frontend/UI**: React, TailwindCSS, Lucide Icons.
+- **AI Core**: Google Gemini 2.5 Flash / Pro.
+- **API Client**: Custom implementation with Retry/Backoff pattern.
+- **Simulation**: In-memory MockDB imitating PostgreSQL & Redis behavior.
+
+---
+
+## 🧩 Структура проекта
+
+```
+/src
+  /api
+    fitnessApiClient.ts  # Typed API wrapper
+  /components
+    ApiKeyModal.tsx      # Auth handler
+    SlotCard.tsx         # UI Component
+  /services
+    gemini.ts            # AI Agent Configuration
+    mockDb.ts            # Simulated Backend Logic
+  /utils
+    retryFetch.ts        # The "Bulletproof" Fetcher
+  App.tsx                # Main Logic
+```
+
+---
+
+## 📡 Пример работы API клиента
+
+Мы не используем `axios`, мы используем нативный `fetch` с оберткой для контроля над процессом:
+
+```typescript
+import { apiCallWithRetry } from "../utils/retryFetch";
+
+export async function getSchedule(date) {
+  return apiCallWithRetry(`${process.env.API_BASE_URL}/schedule?date=${date}`, {
+    headers: { "Authorization": `Bearer ${process.env.API_KEY}` }
+  });
+}
+```
+
+---
+
+## ⚙️ Установка и запуск
+
+1. Клонируйте репозиторий.
+2. `npm install`
+3. `npm run dev`
+4. Введите ваш **Gemini API Key** (хранится только локально в браузере).
+
+---
+
+> *Built with ❤️ by Pavel Hopson for the Modern Web.*
