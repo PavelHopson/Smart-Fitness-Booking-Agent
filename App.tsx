@@ -105,13 +105,13 @@ const App: React.FC = () => {
         
         {/* Header */}
         <div className="p-4 border-b border-gray-800 bg-gray-900/50 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-emerald-400">
+          <div className="flex items-center gap-2 text-[#6BA3FF]">
             <Bot className="w-6 h-6" />
             <h1 className="font-bold tracking-tight">Fitness Agent</h1>
           </div>
-          <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-emerald-950/30 border border-emerald-900/50">
-            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span className="text-xs font-mono text-emerald-600">ONLINE</span>
+          <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-[#6BA3FF]/10 border border-[#6BA3FF]/30">
+            <div className="w-2 h-2 rounded-full bg-[#6BA3FF] animate-pulse shadow-[0_0_6px_rgba(107,163,255,0.6)]"></div>
+            <span className="text-xs font-mono text-[#6BA3FF]/70">ONLINE</span>
           </div>
         </div>
 
@@ -124,7 +124,7 @@ const App: React.FC = () => {
                 max-w-[85%] rounded-2xl p-4 shadow-sm relative
                 ${msg.role === MessageRole.USER 
                   ? 'bg-blue-600 text-white rounded-tr-sm' 
-                  : 'bg-gray-800 border border-gray-700 text-gray-200 rounded-tl-sm'
+                  : 'bg-gray-800 border border-gray-700 text-gray-200 rounded-tl-sm border-l-2 border-l-[#6BA3FF]/50'
                 }
               `}>
                 <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.text}</p>
@@ -149,7 +149,7 @@ const App: React.FC = () => {
               
               {/* Avatar Icon */}
               <div className="mt-2 text-gray-600">
-                 {msg.role === MessageRole.USER ? <UserIcon className="w-4 h-4" /> : <Sparkles className="w-4 h-4 text-emerald-500/50" />}
+                 {msg.role === MessageRole.USER ? <UserIcon className="w-4 h-4" /> : <Sparkles className="w-4 h-4 text-[#6BA3FF]/50" />}
               </div>
 
             </div>
@@ -174,12 +174,12 @@ const App: React.FC = () => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Book yoga for tomorrow..."
-              className="flex-1 bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all text-gray-200 placeholder-gray-600"
+              className="flex-1 bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#6BA3FF]/40 focus:border-[#6BA3FF] transition-all text-gray-200 placeholder-gray-600"
             />
             <button
               type="submit"
               disabled={isLoading || !inputText.trim()}
-              className="bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl p-3 transition-all flex items-center justify-center aspect-square"
+              className="bg-[#6BA3FF] hover:bg-[#89B8FF] hover:shadow-[0_0_12px_rgba(107,163,255,0.3)] disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl p-3 transition-all flex items-center justify-center aspect-square"
             >
               <Send className="w-5 h-5" />
             </button>
@@ -189,23 +189,23 @@ const App: React.FC = () => {
 
       {/* Right Panel: Database Visualization */}
       <div className="flex-1 bg-gray-950 flex flex-col h-full overflow-hidden relative">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-emerald-900/10 via-gray-900/0 to-black pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(107,163,255,0.06),_transparent_60%)] pointer-events-none"></div>
         
         {/* Header */}
         <div className="p-6 border-b border-gray-800 flex justify-between items-center z-10">
           <div>
             <h2 className="text-xl font-bold text-gray-100 flex items-center gap-2">
-              <Database className="w-5 h-5 text-purple-400" />
-              PostgreSQL / Redis State
+              <Database className="w-5 h-5 text-[#6BA3FF] drop-shadow-[0_0_4px_rgba(107,163,255,0.5)]" />
+              <span className="drop-shadow-[0_0_8px_rgba(107,163,255,0.15)]">PostgreSQL / Redis State</span>
             </h2>
             <p className="text-sm text-gray-500 mt-1">Live reflection of database records</p>
           </div>
           <div className="flex gap-4 text-xs font-mono text-gray-500">
              <div className="flex items-center gap-2">
-               <span className="w-2 h-2 rounded-full bg-emerald-500"></span> Available
+               <span className="w-2 h-2 rounded-full bg-[#4AE6A0]"></span> Available
              </div>
              <div className="flex items-center gap-2">
-               <span className="w-2 h-2 rounded-full bg-red-500"></span> Full
+               <span className="w-2 h-2 rounded-full bg-[#F5A623]"></span> Full
              </div>
           </div>
         </div>
