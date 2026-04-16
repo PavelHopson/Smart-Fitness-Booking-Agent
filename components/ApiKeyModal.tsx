@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Key } from 'lucide-react';
+import { IconKey } from './icons/EclipseIcons';
 
 interface ApiKeyModalProps {
   onSubmit: (key: string) => void;
@@ -13,7 +13,7 @@ export const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ onSubmit }) => {
       <div className="bg-gray-900 border border-gray-800 rounded-2xl max-w-md w-full p-6 shadow-2xl">
         <div className="flex items-center gap-3 mb-4 text-emerald-400">
           <div className="p-3 bg-emerald-950/50 rounded-lg border border-emerald-900">
-            <Key className="w-6 h-6" />
+            <IconKey className="w-6 h-6" />
           </div>
           <h2 className="text-xl font-bold">Authentication Required</h2>
         </div>

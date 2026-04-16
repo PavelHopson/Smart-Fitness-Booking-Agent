@@ -1,6 +1,7 @@
 import React from 'react';
 import { TrainingSlot } from '../types';
-import { Calendar, Clock, User, Activity } from 'lucide-react';
+import { IconCalendar, IconClock, IconActivity } from './icons/EclipseIcons';
+import { User } from 'lucide-react';
 
 interface SlotCardProps {
   slot: TrainingSlot;
@@ -19,7 +20,7 @@ export const SlotCard: React.FC<SlotCardProps> = ({ slot }) => {
     `}>
       <div className="flex justify-between items-start mb-3">
         <div className="flex items-center space-x-2 text-sm text-gray-400">
-          <Calendar className="w-4 h-4" />
+          <IconCalendar className="w-4 h-4" />
           <span>{slot.date}</span>
         </div>
         <span className={`
@@ -35,7 +36,7 @@ export const SlotCard: React.FC<SlotCardProps> = ({ slot }) => {
 
       <div className="mb-4">
         <h3 className="text-lg font-semibold text-gray-100 flex items-center gap-2">
-          <Activity className={`w-5 h-5 ${isFull ? 'text-[#F5A623]' : 'text-[#4AE6A0]'}`} />
+          <IconActivity className={`w-5 h-5 ${isFull ? 'text-[#F5A623]' : 'text-[#4AE6A0]'}`} />
           {slot.type}
         </h3>
         <p className="text-sm text-gray-400 flex items-center gap-2 mt-1">
@@ -45,7 +46,7 @@ export const SlotCard: React.FC<SlotCardProps> = ({ slot }) => {
 
       <div className="flex justify-between items-end border-t border-[#1C2536] pt-3">
         <div className="flex items-center space-x-2 text-gray-300">
-          <Clock className="w-4 h-4 text-blue-400" />
+          <IconClock className="w-4 h-4 text-blue-400" />
           <span className="font-mono text-lg">{slot.time}</span>
         </div>
         <div className="text-xs text-gray-500 font-mono">

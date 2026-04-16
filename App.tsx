@@ -4,7 +4,8 @@ import { initializeGemini, sendMessageToAgent } from './services/gemini';
 import { TrainingSlot, Message, MessageRole } from './types';
 import { SlotCard } from './components/SlotCard';
 import { ApiKeyModal } from './components/ApiKeyModal';
-import { Send, Bot, User as UserIcon, Terminal, Database, Sparkles, Loader2 } from 'lucide-react';
+import { Terminal, Loader2 } from 'lucide-react';
+import { IconSend, IconBot, IconUser, IconDatabase, IconSparkles } from './components/icons/EclipseIcons';
 
 const App: React.FC = () => {
   const [apiKey, setApiKey] = useState<string | null>(null);
@@ -106,7 +107,7 @@ const App: React.FC = () => {
         {/* Header */}
         <div className="p-4 border-b border-gray-800 bg-gray-900/50 flex items-center justify-between">
           <div className="flex items-center gap-2 text-[#6BA3FF]">
-            <Bot className="w-6 h-6" />
+            <IconBot className="w-6 h-6" />
             <h1 className="font-bold tracking-tight">Fitness Agent</h1>
           </div>
           <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-[#6BA3FF]/10 border border-[#6BA3FF]/30">
@@ -149,7 +150,7 @@ const App: React.FC = () => {
               
               {/* Avatar Icon */}
               <div className="mt-2 text-gray-600">
-                 {msg.role === MessageRole.USER ? <UserIcon className="w-4 h-4" /> : <Sparkles className="w-4 h-4 text-[#6BA3FF]/50" />}
+                 {msg.role === MessageRole.USER ? <IconUser className="w-4 h-4" /> : <IconSparkles className="w-4 h-4 text-[#6BA3FF]/50" />}
               </div>
 
             </div>
@@ -181,7 +182,7 @@ const App: React.FC = () => {
               disabled={isLoading || !inputText.trim()}
               className="bg-[#6BA3FF] hover:bg-[#89B8FF] hover:shadow-[0_0_12px_rgba(107,163,255,0.3)] disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl p-3 transition-all flex items-center justify-center aspect-square"
             >
-              <Send className="w-5 h-5" />
+              <IconSend className="w-5 h-5" />
             </button>
           </form>
         </div>
@@ -195,7 +196,7 @@ const App: React.FC = () => {
         <div className="p-6 border-b border-gray-800 flex justify-between items-center z-10">
           <div>
             <h2 className="text-xl font-bold text-gray-100 flex items-center gap-2">
-              <Database className="w-5 h-5 text-[#6BA3FF] drop-shadow-[0_0_4px_rgba(107,163,255,0.5)]" />
+              <IconDatabase className="w-5 h-5 text-[#6BA3FF] drop-shadow-[0_0_4px_rgba(107,163,255,0.5)]" />
               <span className="drop-shadow-[0_0_8px_rgba(107,163,255,0.15)]">PostgreSQL / Redis State</span>
             </h2>
             <p className="text-sm text-gray-500 mt-1">Live reflection of database records</p>
