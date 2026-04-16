@@ -108,7 +108,7 @@ const App: React.FC = () => {
         <div className="p-4 border-b border-gray-800 bg-gray-900/50 flex items-center justify-between">
           <div className="flex items-center gap-2 text-[#6BA3FF]">
             <IconBot className="w-6 h-6" />
-            <h1 className="font-bold tracking-tight">Fitness Agent</h1>
+            <h1 className="font-bold tracking-tight text-glow">Fitness Agent</h1>
           </div>
           <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-[#6BA3FF]/10 border border-[#6BA3FF]/30">
             <div className="w-2 h-2 rounded-full bg-[#6BA3FF] animate-pulse shadow-[0_0_6px_rgba(107,163,255,0.6)]"></div>
@@ -212,7 +212,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Grid */}
-        <div className="flex-1 overflow-y-auto p-6 z-10">
+        <div className="flex-1 overflow-y-auto p-6 z-10 eclipse-grid">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {slots.map((slot) => (
               <SlotCard key={slot.id} slot={slot} />

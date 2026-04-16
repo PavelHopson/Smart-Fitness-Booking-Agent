@@ -12,7 +12,7 @@ export const SlotCard: React.FC<SlotCardProps> = ({ slot }) => {
   
   return (
     <div className={`
-      relative p-4 rounded-xl border transition-all duration-300
+      eclipse-slot relative p-4 rounded-xl border transition-all duration-300
       ${isFull
         ? 'bg-[#F5A623]/5 border-[#F5A623]/30 opacity-70'
         : 'bg-gray-900 border-[#1C2536] hover:border-[#6BA3FF]/50 hover:shadow-lg hover:shadow-[#6BA3FF]/10'
